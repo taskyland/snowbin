@@ -1,0 +1,13 @@
+name = "snowbin"
+compatibility_date = "2023-12-01"
+main = "src/index.tsx"
+
+[site]
+bucket = "./assets"
+
+[vars]
+key = "youshallnotpass"
+
+[[kv_namespaces]]
+binding = "pastes"
+id = "meow"
