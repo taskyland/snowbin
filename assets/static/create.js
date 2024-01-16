@@ -1,14 +1,14 @@
-const textarea = document.getElementById('input')
-const size = document.getElementById('size')
-const btn = document.getElementById('submit')
-const key = document.getElementById('key')
-const url = document.getElementById('url')
+const textarea = document.querySelector('#input')
+const size = document.querySelector('#size')
+const btn = document.querySelector('#submit')
+const key = document.querySelector('#key')
+const url = document.querySelector('#url')
 
 textarea.addEventListener('input', (e) => {
   /* count text bytes */
   const byteSize = new Blob([e.currentTarget.value]).size
   const kbSize = (byteSize / 1024).toFixed(2)
-  size.innerText = `${kbSize} KB / 1024 KB`
+  size.textContent = `${kbSize} KB / 1024 KB`
   if (kbSize > 1024) {
     btn.setAttribute('disabled', true)
   } else {
@@ -46,9 +46,9 @@ btn.addEventListener('click', async (e) => {
     }
     const data = await response.json()
     window.location.href = `/${data.id}`
-  } catch (err) {
+  } catch (error) {
     alert('Error! Please check your console for errors.')
-    console.error(err)
+    console.error(error)
   } finally {
     btn.removeAttribute('disabled')
     btn.ariaBusy = false
