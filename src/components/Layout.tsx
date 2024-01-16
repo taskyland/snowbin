@@ -11,12 +11,12 @@ export const Layout: FC = (props) => {
 
         <meta
           name="description"
-          content="really epic markdown pastebin with <3"
+          content="Delightfully crafted pastebin with <3."
         />
         <meta property="og:title" content="snowbin" />
         <meta
           property="og:description"
-          content="really epic markdown pastebin with <3"
+          content="Delightfully crafted pastebin with <3."
         />
         <meta property="og:type" content="website" />
         <meta name="theme-color" content="#9EB1FF" />
@@ -29,7 +29,7 @@ export const Layout: FC = (props) => {
           {props.children}
           <hr />
           <footer class="mt-4 w-full max-w-2xl p-4 text-center text-neutral-dark-6 dark:text-neutral-6">
-            <div class="flex justify-center space-x-2 text-sm">
+            <div class="flex justify-center space-x-2">
               <a href="https://github.com/fmhy/snowbin" class="px-2">
                 source
               </a>

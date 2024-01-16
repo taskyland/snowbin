@@ -1,6 +1,7 @@
+import type { FC } from 'hono/jsx'
 import { Layout } from './Layout'
 
-export const NotFound = () => {
+export const NotFound: FC = () => {
   return (
     <Layout>
       <h2 class="text-center">

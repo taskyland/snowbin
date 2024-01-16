@@ -1,6 +1,7 @@
+import type { FC } from 'hono/jsx'
 import { Layout } from './Layout'
 
-export const What = () => {
+export const What: FC = () => {
   return (
     <Layout>
       <h2>snowbin</h2>

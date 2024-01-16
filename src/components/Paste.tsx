@@ -1,6 +1,7 @@
+import type { FC } from 'hono/jsx'
 import { Layout } from './Layout'
 
-export function Paste(props: { content: string }) {
+export const Paste: FC = (props) => {
   // HTML is disabled.
   const htm = { __html: props.content }
   return (
