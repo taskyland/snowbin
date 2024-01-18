@@ -1,5 +1,5 @@
 import type { FC } from 'hono/jsx'
-import { Layout } from '../components/Layout'
+import { Layout } from './Layout'
 import { Button } from './Button'
 import { Input } from './Input'
 import { Textarea } from './Textarea'
@@ -16,7 +16,12 @@ export const Admin: FC = () => {
           <Input name="Admin Key" id="key" />
           <Input name="Custom URL" id="url" />
         </div>
-        <Button />
+        <Button id="submit" text="Submit" />
+        <hr />
+        <div class="grid grid-cols-2 gap-4">
+          <Input name="ID (/xyz)" id="id" />
+          <Button name="Fetch" id="get" />
+        </div>
       </div>
     </Layout>
   )

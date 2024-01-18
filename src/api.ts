@@ -1,7 +1,6 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import ShortUniqueId from 'short-unique-id'
-import { md } from './core/markdown'
 import type { Bindings, GetRequest } from './core/types'
 
 const router = new Hono<{ Bindings: Bindings }>()
@@ -30,22 +29,15 @@ router.post('/', async (c) => {
   if (textSize > 1024 * 1024) {
     throw new HTTPException(400, { message: 'Content was too large.' })
   }
-  const render = md.render(content)
 
   if (key && url) {
-    await c.env.pastes.put(url, render)
+    await c.env.pastes.put(url, content)
     return c.json({ id: url })
   }
 
   const id = suid.rnd()
-  await c.env.pastes.put(id, render, { expirationTtl: TTL })
+  await c.env.pastes.put(id, content, { expirationTtl: TTL })
   return c.json({ id })
-})
-
-router.get('/', async (c) => {
-  const data = await c.req.json()
-  const entry = await c.env.pastes.get(data.id)
-  return c.text(entry!)
 })
 
 export default router

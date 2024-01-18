@@ -1,12 +1,12 @@
 import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 
-// @ts-expect-error
+// @ts-expect-error No types
 import { full as emoji } from 'markdown-it-emoji'
 import { fromHighlighter } from 'markdown-it-shikiji/core'
 import { getHighlighterCore, loadWasm } from 'shikiji/core'
 
-// @ts-expect-error
+// @ts-expect-error We are importing wasm here
 import wasm from 'shikiji/onig.wasm'
 
 await loadWasm((importObject) => WebAssembly.instantiate(wasm, importObject))
@@ -28,7 +28,7 @@ const md = new MarkdownIt({
   html: false
 })
   .use(
-    // @ts-expect-error
+    // @ts-expect-error No types
     fromHighlighter(highlighter, {
       themes: { dark: 'github-dark-dimmed', light: 'github-light' }
     })

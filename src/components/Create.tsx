@@ -11,7 +11,7 @@ export const Create: FC = () => {
       <p>Delightfully crafted pastebin with {'<3'}.</p>
       <div class="w-full max-w-2xl space-y-4 p-4">
         <Textarea />
-        <Button />
+        <Button name="Submit" id="submit" />
       </div>
     </Layout>
   )

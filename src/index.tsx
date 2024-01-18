@@ -8,8 +8,10 @@ import { NotFound } from './components/NotFound'
 import type { Bindings } from './core/types'
 import { Admin } from './components/Admin'
 import { What } from './components/What'
+import { md } from './core/markdown'
 
 const app = new Hono<{ Bindings: Bindings }>()
+const CACHE_DURATION = 60 * 60 * 24 // 1 day
 
 app.use('/static/*', serveStatic({ root: './' }))
 app.use('*', logger())
@@ -29,10 +31,11 @@ app.get('/admin', (c) => {
 app.get('/:id', async (c) => {
   const { id } = c.req.param()
   const entry = await c.env.pastes.get(id)
-  if (!entry) {
-    return c.html(<NotFound />)
-  }
-  return c.html(<Paste content={entry} />)
+  if (!entry) return c.html(<NotFound />)
+
+  return c.html(<Paste content={md.render(entry)} />, 200, {
+    'Cache-Control': `max-age=${CACHE_DURATION}`
+  })
 })
 
 app.route('/api', api)
