@@ -38,6 +38,14 @@ app.get('/:id', async (c) => {
   })
 })
 
+app.get('/:id/raw', async (c) => {
+  const { id } = c.req.param()
+  const entry = await c.env.pastes.get(id)
+  if (!entry) return c.text('Could not find that paste.')
+
+  return c.text(entry)
+})
+
 app.route('/api', api)
 
 export default app
