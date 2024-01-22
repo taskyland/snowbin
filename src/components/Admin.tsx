@@ -16,12 +16,12 @@ export const Admin: FC = () => {
           <Input name="Admin Key" id="key" />
           <Input name="Custom URL" id="url" />
         </div>
-        <Button id="submit" text="Submit" />
+        <Button id="submit" name="Submit" />
         <hr />
-        <div class="grid grid-cols-2 gap-4">
-          <Input name="ID (/xyz)" id="id" />
-          <Button name="Fetch" id="get" />
-        </div>
+        {/* <div class="grid grid-cols-2 gap-4"> */}
+        {/*   <Input name="ID (/xyz)" id="id" /> */}
+        {/*   <Button name="Fetch" id="get" /> */}
+        {/* </div> */}
       </div>
     </Layout>
   )
