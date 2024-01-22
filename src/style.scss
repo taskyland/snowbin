@@ -132,6 +132,14 @@ body {
   @apply block dark:hidden;
 }
 
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
 div[class*='language-'] {
   @apply relative flex;
 

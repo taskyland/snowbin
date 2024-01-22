@@ -28,7 +28,6 @@ const md = new MarkdownIt({
   html: false
 })
   .use(
-    // @ts-expect-error No types
     fromHighlighter(highlighter, {
       themes: { dark: 'github-dark-dimmed', light: 'github-light' }
     })
