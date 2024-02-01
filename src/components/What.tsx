@@ -13,8 +13,8 @@ export const What: FC = () => {
       <h2>Usage</h2>
       <p>
         Usual commonmark compliant markdown syntax is supported with extensions
-        like Shikiji for code highlighting, emoji and much more coming soon.
-        Only TypeScript and JavaScript languages are supported due to technical
+        like Shiki for code highlighting, emoji and much more coming soon. Only
+        TypeScript and JavaScript languages are supported due to technical
         limitations and will be fixed soon.
       </p>
 

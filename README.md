@@ -16,7 +16,7 @@ You just have to clone this repository, `bun install`, `bun build:css` to build
 the scss, then `bun dev` to start wrangler dev.
 
 Server is built with Hono with `hono/jsx` for templating, SCSS and TailwindCSS
-with radix-colors, shikiji and markdown-it for markdown.
+with radix-colors, shiki and markdown-it for markdown.
 
 ## Contributing
 
