@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240117.0",
-    "@radix-ui/colors": "^0.1.9",
+    "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "@taskylizard/eslint-config": "^1.1.1",
     "@types/markdown-it": "^13.0.7",
