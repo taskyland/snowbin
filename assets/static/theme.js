@@ -1,5 +1,5 @@
 ;(() => {
-  let v = localStorage.getItem('color-scheme'),
+  const v = localStorage.getItem('color-scheme'),
     a = window.matchMedia('(prefers-color-scheme: dark)').matches,
     cl = document.documentElement.classList,
     setColorScheme = (v) =>
@@ -10,5 +10,11 @@
   window.setColorScheme = (v) => {
     setColorScheme(v)
     localStorage.setItem('color-scheme', v)
+  }
+  window.toggleColorScheme = () => {
+    const cl = document.documentElement.classList
+    const currentScheme = cl.contains('dark') ? 'light' : 'dark'
+    cl.toggle('dark')
+    localStorage.setItem('color-scheme', currentScheme)
   }
 })()

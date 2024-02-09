@@ -41,6 +41,14 @@ export const Layout: FC = (props) => {
               <a href="https://discord.gg/Stz6y6NgNg" class="px-2">
                 discord
               </a>
+              <span>•</span>
+              <a
+                onClick="window.toggleColorScheme()"
+                type="button"
+                class="px-2"
+              >
+                theme
+              </a>
             </div>
           </footer>
         </main>

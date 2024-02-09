@@ -1,38 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    ":rebaseStalePrs"
-  ],
+  "extends": ["config:base", ":rebaseStalePrs"],
   "packageRules": [
     {
       "groupName": "definitelyTyped",
-      "matchPackagePrefixes": [
-        "@types/"
-      ]
+      "matchPackagePrefixes": ["@types/"]
     },
     {
-      "matchPackageNames": [
-        "@types/node"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["major"],
       "enabled": false
     },
     {
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch"
     }
   ],
-  "prBodyNotes": [
-    "{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"
-  ]
+  "prBodyNotes": ["{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"]
 }
