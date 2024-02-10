@@ -10,7 +10,7 @@
   "dependencies": {
     "@shikijs/markdown-it": "^1.0.0-beta.3",
     "@shikijs/transformers": "^1.0.0-beta.3",
-    "hono": "^3.12.6",
+    "hono": "^4.0.0",
     "markdown-it": "^14.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
