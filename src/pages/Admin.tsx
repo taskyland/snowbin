@@ -1,8 +1,8 @@
 import type { FC } from 'hono/jsx'
-import { Layout } from './Layout'
-import { Button } from './Button'
-import { Input } from './Input'
-import { Textarea } from './Textarea'
+import { Layout } from '../components/Layout'
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
+import { Textarea } from '../components/Textarea'
 
 export const Admin: FC = () => {
   return (

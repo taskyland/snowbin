@@ -1,19 +1,20 @@
 import { Hono } from 'hono'
+import manifest from '__STATIC_CONTENT_MANIFEST'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { logger } from 'hono/logger'
-import { Create } from './components/Create'
+import { Create } from './pages/Create'
 import api from './api'
 import { Paste } from './components/Paste'
-import { NotFound } from './components/NotFound'
+import { NotFound } from './pages/NotFound'
 import type { Bindings } from './core/types'
-import { Admin } from './components/Admin'
-import { What } from './components/What'
+import { Admin } from './pages/Admin'
+import { What } from './pages/What'
 import { md } from './core/markdown'
 
 const app = new Hono<{ Bindings: Bindings }>()
 const CACHE_DURATION = 60 * 60 * 24 // 1 day
 
-app.use('/static/*', serveStatic({ root: './' }))
+app.use('/static/*', serveStatic({ root: './', manifest }))
 app.use('*', logger())
 
 app.get('/', (c) => {
