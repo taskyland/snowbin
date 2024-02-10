@@ -5,6 +5,7 @@
     "deploy": "bun build:css --minify && wrangler deploy --minify src/index.tsx",
     "dev": "wrangler dev src/index.tsx",
     "format": "prettier -w --cache --check .",
+    "generate": "drizzle-kit generate:sqlite",
     "lint": "eslint --cache -f pretty src"
   },
   "dependencies": {
