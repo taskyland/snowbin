@@ -31,17 +31,22 @@ app.get('/admin', (c) => {
 
 app.get('/:id', async (c) => {
   const { id } = c.req.param()
-  const entry = await c.env.pastes.get(id)
-  if (!entry) return c.html(<NotFound />)
+  const data = await c.env.pastes.prepare("SELECT * FROM pastes WHERE id = ?").bind(id).all()
+  if (!data) return c.html(<NotFound />)
+  const content = data.results?.[0]?.content;
+  if (!content){
+    console.error(`WARN: database possibly corrupt at ${id}. (content missing)`);
+    return c.html(<NotFound />)
+  }
 
-  return c.html(<Paste content={md.render(entry)} />, 200, {
+  return c.html(<Paste content={md.render(content)} />, 200, {
     'Cache-Control': `max-age=${CACHE_DURATION}`
   })
 })
 
 app.get('/:id/raw', async (c) => {
   const { id } = c.req.param()
-  const entry = await c.env.pastes.get(id)
+  const entry = await c.env.pastes.prepare("SELECT * FROM pastes WHERE id = ?").bind(userId).all()
   if (!entry) return c.text('Could not find that paste.')
 
   return c.text(entry)

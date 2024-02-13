@@ -1,5 +1,5 @@
 export type Bindings = {
-  pastes: KVNamespace
+  pastes: D1Namespace
   key: string
 }
 

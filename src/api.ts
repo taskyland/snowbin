@@ -31,13 +31,16 @@ router.post('/', async (c) => {
   }
 
   if (key && url) {
-    await c.env.pastes.put(url, content)
-    return c.json({ id: url })
+    const res = await c.env.pastes.prepare('INSERT INTO pastes (url, content) VALUES (?, ?)')
+          .bind(url, content).run();
+    return res.json({ id: url })
   }
 
   const id = suid.rnd()
-  await c.env.pastes.put(id, content, { expirationTtl: TTL })
-  return c.json({ id })
+  const currentTime = +new Date()/1000; // div by 1000 cuz it returns in miliseconds
+  const res = await c.env.pastes.prepare('INSERT INTO pastes (id, content, expiresAt) VALUES (?, ?, ?)')
+        .bind(id, content, currentTime + TTL).run();
+  return c.json({ id });
 })
 
 export default router

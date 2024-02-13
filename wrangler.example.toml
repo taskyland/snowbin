@@ -8,6 +8,6 @@ bucket = "./assets"
 [vars]
 key = "youshallnotpass"
 
-[[kv_namespaces]]
-binding = "pastes"
-id = "meow"
+[[d1_databases]]
+binding = "pastes" 
+database_id = "meow"
