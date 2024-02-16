@@ -3,7 +3,7 @@ import { getDb } from './db'
 import { Paste, pasteSchema } from './pasteSchema'
 import { eq } from 'drizzle-orm'
 
-export async function create(newPaste: Pick<Paste, 'content'>) {
+async function create(newPaste: Pick<Paste, 'content' | 'expirationTtl'>) {
   try {
     const db = getDb({
       D1: {} as any
@@ -18,7 +18,7 @@ export async function create(newPaste: Pick<Paste, 'content'>) {
         content: newPaste.content,
         createdAt: new Date(),
         updatedAt: new Date(),
-        expirationTtl: 7 * 24 * 60 * 60 // 7 days
+        expirationTtl: newPaste.expirationTtl // 0 for no expiration
       })
       .run()
     return id
@@ -27,7 +27,7 @@ export async function create(newPaste: Pick<Paste, 'content'>) {
   }
 }
 
-export async function findById(id: string): Promise<Paste | undefined> {
+async function findById(id: string): Promise<Paste | undefined> {
   const db = getDb({
     D1: {} as any
   })
@@ -44,7 +44,7 @@ export async function findById(id: string): Promise<Paste | undefined> {
   return undefined
 }
 
-export async function deleteById(id: string) {
+async function deleteById(id: string) {
   const db = getDb({
     D1: {} as any
   })
@@ -53,4 +53,10 @@ export async function deleteById(id: string) {
   } catch (error) {
     console.error(`Error deleting paste: ${error}`)
   }
+}
+
+export default {
+  create,
+  findById,
+  deleteById
 }
