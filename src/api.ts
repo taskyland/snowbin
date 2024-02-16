@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import ShortUniqueId from 'short-unique-id'
 import type { Bindings, GetRequest } from './core/types'
+import pasteRepository from './data/pasteRepository'
 
 const router = new Hono<{ Bindings: Bindings }>()
 const suid = new ShortUniqueId()
@@ -31,12 +32,12 @@ router.post('/', async (c) => {
   }
 
   if (key && url) {
-    await c.env.pastes.put(url, content)
+    const id = await pasteRepository.create({ content, expirationTtl: 0 })
+    const url = `${c.req.url}/${id}`
     return c.json({ id: url })
   }
 
-  const id = suid.rnd()
-  await c.env.pastes.put(id, content, { expirationTtl: TTL })
+  const id = await pasteRepository.create({ content, expirationTtl: TTL })
   return c.json({ id })
 })
 
