@@ -1,10 +1,14 @@
 import ShortUniqueId from 'short-unique-id'
-import { db } from './db'
+import { getDb } from './db'
 import { Paste, pasteSchema } from './pasteSchema'
 import { eq } from 'drizzle-orm'
 
 export async function create(newPaste: Pick<Paste, 'content'>) {
   try {
+    const db = getDb({
+      D1: {} as any
+    })
+
     const suid = new ShortUniqueId()
     const id = suid.rnd()
     await db
@@ -23,22 +27,29 @@ export async function create(newPaste: Pick<Paste, 'content'>) {
   }
 }
 
-export function findById(id: string): Paste | undefined {
-  const result = db
+export async function findById(id: string): Promise<Paste | undefined> {
+  const db = getDb({
+    D1: {} as any
+  })
+
+  const result = await db
     .select()
     .from(pasteSchema)
     .where(eq(pasteSchema.id, id))
-    .all()[0]
+    .all()
 
-  if (result && result.content) {
-    return result
+  if (result && result[0].content) {
+    return result[0]
   }
   return undefined
 }
 
-export function deleteById(id: string) {
+export async function deleteById(id: string) {
+  const db = getDb({
+    D1: {} as any
+  })
   try {
-    db.delete(pasteSchema).where(eq(pasteSchema.id, id)).run()
+    await db.delete(pasteSchema).where(eq(pasteSchema.id, id)).run()
   } catch (error) {
     console.error(`Error deleting paste: ${error}`)
   }
