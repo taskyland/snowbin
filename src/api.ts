@@ -1,11 +1,9 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
-import ShortUniqueId from 'short-unique-id'
 import type { Bindings, GetRequest } from './core/types'
 import pasteRepository from './data/pasteRepository'
 
 const router = new Hono<{ Bindings: Bindings }>()
-const suid = new ShortUniqueId()
 const TTL = 7 * 24 * 60 * 60 // 7 days
 
 router.post('/', async (c) => {
