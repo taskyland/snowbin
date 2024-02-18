@@ -10,6 +10,7 @@ import type { Bindings } from './core/types'
 import { Admin } from './pages/Admin'
 import { What } from './pages/What'
 import { md } from './core/markdown'
+import db from './core/database'
 
 const app = new Hono<{ Bindings: Bindings }>()
 const CACHE_DURATION = 60 * 60 * 24 // 1 day
@@ -31,20 +32,20 @@ app.get('/admin', (c) => {
 
 app.get('/:id', async (c) => {
   const { id } = c.req.param()
-  const entry = await c.env.pastes.get(id)
+  const entry = await db.findById(c.env, id)
   if (!entry) return c.html(<NotFound />)
 
-  return c.html(<Paste content={md.render(entry)} />, 200, {
+  return c.html(<Paste content={md.render(entry.content)} />, 200, {
     'Cache-Control': `max-age=${CACHE_DURATION}`
   })
 })
 
 app.get('/:id/raw', async (c) => {
   const { id } = c.req.param()
-  const entry = await c.env.pastes.get(id)
+  const entry = await db.findById(c.env, id)
   if (!entry) return c.text('Could not find that paste.')
 
-  return c.text(entry)
+  return c.text(entry.content)
 })
 
 app.route('/api', api)

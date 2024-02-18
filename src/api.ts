@@ -2,10 +2,10 @@ import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import ShortUniqueId from 'short-unique-id'
 import type { Bindings, GetRequest } from './core/types'
+import db from './core/database'
 
 const router = new Hono<{ Bindings: Bindings }>()
-const suid = new ShortUniqueId()
-const TTL = 7 * 24 * 60 * 60 // 7 days
+const uid = new ShortUniqueId()
 
 router.post('/', async (c) => {
   const { url, content, key } = await c.req.json<GetRequest>()
@@ -31,12 +31,14 @@ router.post('/', async (c) => {
   }
 
   if (key && url) {
-    await c.env.pastes.put(url, content)
-    return c.json({ id: url })
+    const id = await db.create(c.env, { id: url, content, expirationTtl: 0 })
+    return c.json({ id: id })
   }
 
-  const id = suid.rnd()
-  await c.env.pastes.put(id, content, { expirationTtl: TTL })
+  const id = await db.create(c.env, {
+    id: uid.rnd(),
+    content
+  })
   return c.json({ id })
 })
 
