@@ -1,4 +1,4 @@
-import type { FC } from 'hono/jsx'
+import type { FC } from 'hono/jsx';
 
 export const Input: FC = (props) => {
   return (
@@ -7,5 +7,5 @@ export const Input: FC = (props) => {
       placeholder={props.name}
       id={props.id}
     />
-  )
-}
+  );
+};

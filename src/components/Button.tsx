@@ -1,4 +1,4 @@
-import type { FC } from 'hono/jsx'
+import type { FC } from 'hono/jsx';
 
 export const Button: FC = (props) => {
   return (
@@ -8,5 +8,5 @@ export const Button: FC = (props) => {
     >
       {props.name}
     </button>
-  )
-}
+  );
+};

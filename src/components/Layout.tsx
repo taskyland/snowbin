@@ -1,4 +1,4 @@
-import type { FC } from 'hono/jsx'
+import type { FC } from 'hono/jsx';
 
 export const Layout: FC = (props) => {
   return (
@@ -54,5 +54,5 @@ export const Layout: FC = (props) => {
         </main>
       </body>
     </html>
-  )
-}
+  );
+};

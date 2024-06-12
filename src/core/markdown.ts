@@ -1,16 +1,16 @@
-import MarkdownIt from 'markdown-it'
-import anchor from 'markdown-it-anchor'
+import MarkdownIt from 'markdown-it';
+import anchor from 'markdown-it-anchor';
 
 // @ts-expect-error No types
-import { full as emoji } from 'markdown-it-emoji'
-import { fromHighlighter } from '@shikijs/markdown-it/core'
-import { getHighlighterCore, loadWasm } from 'shiki/core'
-import { transformerNotationDiff } from '@shikijs/transformers'
+import { full as emoji } from 'markdown-it-emoji';
+import { fromHighlighter } from '@shikijs/markdown-it/core';
+import { getHighlighterCore, loadWasm } from 'shiki/core';
+import { transformerNotationDiff } from '@shikijs/transformers';
 
 // @ts-expect-error We are importing wasm here
-import wasm from 'shiki/onig.wasm'
+import wasm from 'shiki/onig.wasm';
 
-await loadWasm((importObject) => WebAssembly.instantiate(wasm, importObject))
+await loadWasm((importObject) => WebAssembly.instantiate(wasm, importObject));
 
 const highlighter = await getHighlighterCore({
   themes: [
@@ -80,7 +80,7 @@ const highlighter = await getHighlighterCore({
     import('shiki/langs/yaml.mjs'),
     import('shiki/langs/zig.mjs')
   ]
-})
+});
 
 const md = new MarkdownIt({
   linkify: true,
@@ -98,8 +98,8 @@ const md = new MarkdownIt({
       symbol: `<svg width="20" height="20"><use href="#radix-icons-link-2"/></svg>`
     })
   } as anchor.AnchorOptions)
-  .use(emoji)
+  .use(emoji);
 
-md.linkify.set({ fuzzyLink: false })
+md.linkify.set({ fuzzyLink: false });
 
-export { md }
+export { md };

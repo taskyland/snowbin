@@ -1,5 +1,5 @@
-import type { FC } from 'hono/jsx'
-import { Layout } from '../components/Layout'
+import type { FC } from 'hono/jsx';
+import { Layout } from '../components/Layout';
 
 export const NotFound: FC = () => {
   return (
@@ -10,5 +10,5 @@ export const NotFound: FC = () => {
 
       <a href="/">go back to homepage</a>
     </Layout>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import type { FC } from 'hono/jsx'
+import type { FC } from 'hono/jsx';
 
 export const Textarea: FC = () => {
   return (
@@ -13,5 +13,5 @@ export const Textarea: FC = () => {
         <span id="size">0 KB / 1024 KB</span>
       </div>
     </div>
-  )
-}
+  );
+};

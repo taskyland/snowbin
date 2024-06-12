@@ -5,8 +5,13 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
-    "lib": ["esnext"],
-    "types": ["@cloudflare/workers-types"],
+    "lib": [
+      "esnext"
+    ],
+    "types": [
+      "@cloudflare/workers-types",
+      "vite/client"
+    ],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }

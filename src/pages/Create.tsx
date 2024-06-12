@@ -1,7 +1,7 @@
-import type { FC } from 'hono/jsx'
-import { Layout } from '../components/Layout'
-import { Button } from '../components/Button'
-import { Textarea } from '../components/Textarea'
+import type { FC } from 'hono/jsx';
+import { Layout } from '../components/Layout';
+import { Button } from '../components/Button';
+import { Textarea } from '../components/Textarea';
 
 export const Create: FC = () => {
   return (
@@ -14,5 +14,5 @@ export const Create: FC = () => {
         <Button name="Submit" id="submit" />
       </div>
     </Layout>
-  )
-}
+  );
+};

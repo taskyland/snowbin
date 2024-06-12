@@ -1,9 +1,9 @@
-import type { FC } from 'hono/jsx'
-import { Layout } from './Layout'
+import type { FC } from 'hono/jsx';
+import { Layout } from './Layout';
 
 export const Paste: FC = (props) => {
   // HTML is disabled.
-  const htm = { __html: props.content }
+  const htm = { __html: props.content };
   return (
     <Layout>
       <svg class="ce-sprite">
@@ -19,5 +19,5 @@ export const Paste: FC = (props) => {
 
       <div dangerouslySetInnerHTML={htm} />
     </Layout>
-  )
-}
+  );
+};

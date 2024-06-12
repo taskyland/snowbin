@@ -1,5 +1,5 @@
-import type { FC } from 'hono/jsx'
-import { Layout } from '../components/Layout'
+import type { FC } from 'hono/jsx';
+import { Layout } from '../components/Layout';
 
 export const What: FC = () => {
   return (
@@ -55,5 +55,5 @@ export const What: FC = () => {
         contact me <a href="mailto:tasky@fmhy.net">here.</a>
       </p>
     </Layout>
-  )
-}
+  );
+};
