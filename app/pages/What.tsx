@@ -1,10 +1,11 @@
 import type { FC } from 'hono/jsx';
-import { Layout } from '../components/Layout';
 
 export const What: FC = () => {
   return (
-    <Layout>
-      <h2>snowbin</h2>
+    <>
+      <h2>
+        <a href="/">snowbin</a>
+      </h2>
       <p>
         Snowbin is a delightfully crafted pastebin with markdown support. Pastes
         are saved upto 7 days before being deleted. snowbin is a work in
@@ -54,6 +55,6 @@ export const What: FC = () => {
         (there is no system to notify you). To report any of the above activity,
         contact me <a href="mailto:tasky@fmhy.net">here.</a>
       </p>
-    </Layout>
+    </>
   );
 };

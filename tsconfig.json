@@ -6,10 +6,10 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": [
-      "esnext"
+      "esnext",
+      "DOM"
     ],
     "types": [
-      "@cloudflare/workers-types",
       "vite/client"
     ],
     "jsx": "react-jsx",
