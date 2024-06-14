@@ -1,7 +1,5 @@
 import { jsxRenderer } from 'hono/jsx-renderer';
 import styles from './styles.scss';
-import client from './client/server-component?client';
-import theme from './client/theme?client';
 
 export default jsxRenderer(({ children }) => {
   return (
@@ -24,8 +22,8 @@ export default jsxRenderer(({ children }) => {
         <meta property="og:type" content="website" />
         <meta name="theme-color" content="#9EB1FF" />
 
-        <script type="module">{client}</script>
-        <script type="module">{theme}</script>
+        <script type="module" src="/static/sc.js" />
+        <script defer={true} type="module" src="/static/theme.js" />
         <style>{styles}</style>
       </head>
 

@@ -5,6 +5,7 @@ import { Textarea } from '../components/Textarea';
 export const Create: FC = () => {
   return (
     <>
+      {/* <script type="module" src="/static/create.js" /> */}
       <h2>snowbin</h2>
       <p>Delightfully crafted pastebin with {'<3'}.</p>
       <div class="w-full max-w-2xl space-y-4 p-4">

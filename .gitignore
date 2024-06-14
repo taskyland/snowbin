@@ -10,3 +10,4 @@ yarn.lock
 pnpm-lock.yaml
 .eslintcache
 out.css
+public/static

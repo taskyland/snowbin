@@ -1,5 +1,5 @@
 import type { BuildConfig, BunPlugin, OnLoadResult } from 'bun';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 export const clientPlugin: BunPlugin = {
   name: 'Client Plugin',
@@ -12,9 +12,9 @@ export const clientPlugin: BunPlugin = {
       const isProd =
         Bun.env.NODE_ENV === 'production'
           ? ({ minify: true, sourcemap: 'none' } as Omit<
-              BuildConfig,
-              'entrypoints'
-            >)
+            BuildConfig,
+            'entrypoints'
+          >)
           : ({ sourcemap: 'inline' } as Omit<BuildConfig, 'entrypoints'>);
 
       const pipeline = await Bun.build({
@@ -31,7 +31,7 @@ export const clientPlugin: BunPlugin = {
       return {
         loader: 'object',
         exports: {
-          default: String.raw`${built}`
+          default: built.toString()
         }
       } satisfies OnLoadResult;
     });

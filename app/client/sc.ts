@@ -41,14 +41,14 @@ window.addEventListener(
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
       return;
     }
-    const href = (e.target as HTMLElement).getAttribute('href')!;
-    if (!href.startsWith('/')) {
+    const href = (e.target as HTMLElement).getAttribute('href');
+    if (href && !href.startsWith('/')) {
       return;
     }
     e.preventDefault();
     window.history.pushState(null, null, href);
 
-    // Fallback for browsers that don't support this API:
+    // Fallback for browsers that don't support the API:
     if (!document.startViewTransition) {
       mountComponent(href);
       return;
