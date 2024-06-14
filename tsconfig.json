@@ -7,11 +7,10 @@
     "strict": true,
     "lib": [
       "esnext",
-      "DOM"
+      "DOM",
+      "DOM.Iterable"
     ],
-    "types": [
-      "vite/client"
-    ],
+    "types": [],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }

@@ -1,8 +1,8 @@
-const textarea = document.querySelector("#input");
-const size = document.querySelector("#size");
-const btn = document.querySelector("#submit");
-const key = document.querySelector("#key");
-const url = document.querySelector("#url");
+const textarea = document.querySelector("#input")!;
+const size = document.querySelector("#size")!;
+const btn = document.querySelector("#submit")!;
+const key = document.querySelector("#key")!;
+const url = document.querySelector("#url")!;
 
 textarea.addEventListener("input", (e) => {
   /* count text bytes */
