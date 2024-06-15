@@ -4,8 +4,22 @@
     "@taskylizard/biome-config"
   ],
   "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    },
     "globals": [
-      "Bun"
+      "Bun",
+      "JSX"
     ]
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "noDefaultExport": "off"
+      }
+    }
   }
 }

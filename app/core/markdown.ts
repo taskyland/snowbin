@@ -1,15 +1,15 @@
-import MarkdownIt from 'markdown-it';
-import anchor from 'markdown-it-anchor';
+import MarkdownIt from 'markdown-it'
+import anchor from 'markdown-it-anchor'
 // @ts-expect-error No types
-import { full as emoji } from 'markdown-it-emoji';
-import Shiki from '@shikijs/markdown-it';
-import { transformerNotationDiff } from '@shikijs/transformers';
+import { full as emoji } from 'markdown-it-emoji'
+import Shiki from '@shikijs/markdown-it'
+import { transformerNotationDiff } from '@shikijs/transformers'
 
 const md = MarkdownIt({
   linkify: true,
   typographer: true,
   html: false
-});
+})
 
 md.use(
   await Shiki({
@@ -25,8 +25,8 @@ md.use(
       symbol: `<svg width="20" height="20"><use href="#radix-icons-link-2"/></svg>`
     })
   } as anchor.AnchorOptions)
-  .use(emoji);
+  .use(emoji)
 
-md.linkify.set({ fuzzyLink: false });
+md.linkify.set({ fuzzyLink: false })
 
-export { md };
+export { md }

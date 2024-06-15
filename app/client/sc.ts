@@ -1,61 +1,61 @@
-import type { Props } from 'hono/dist/types/jsx/base';
-import { jsx as jsxFn } from 'hono/jsx';
+import type { Props } from 'hono/dist/types/jsx/base'
+import { jsx as jsxFn } from 'hono/jsx'
 
 function renderServerComponentToJSX({
   tag,
   props,
   children
 }: {
-  tag: string;
-  props: Props;
-  children: unknown[];
+  tag: string
+  props: Props
+  children: unknown[]
 }): unknown {
   const processedChildren = children.map((child) => {
     if (typeof child === 'object' && child !== null) {
-      return renderServerComponentToJSX(child);
+      return renderServerComponentToJSX(child)
     }
-    return child;
-  });
-  return jsxFn(tag, props, ...processedChildren);
+    return child
+  })
+  return jsxFn(tag, props, ...processedChildren)
 }
 
 async function mountComponent(pathname: string) {
-  const res = await fetch(`${pathname}?__sc`);
-  const serverComponent = await res.json();
-  const jsx = renderServerComponentToJSX(serverComponent);
-  const root = document.querySelector<HTMLElement>('#root');
-  root.innerHTML = await jsx.toString();
+  const res = await fetch(`${pathname}?__sc`)
+  const serverComponent = await res.json()
+  const jsx = renderServerComponentToJSX(serverComponent)!
+  const root = document.querySelector<HTMLElement>('#root')!
+  root.innerHTML = jsx.toString()
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
   // Don't handle a server component when initial loading
-  await mountComponent(window.location.pathname);
-});
+  await mountComponent(window.location.pathname)
+})
 
 window.addEventListener(
   'click',
   (e) => {
     if ((e.target as HTMLElement).tagName !== 'A') {
-      return;
+      return
     }
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
-      return;
+      return
     }
-    const href = (e.target as HTMLElement).getAttribute('href');
+    const href = (e.target as HTMLElement).getAttribute('href')
     if (href && !href.startsWith('/')) {
-      return;
+      return
     }
-    e.preventDefault();
-    window.history.pushState(null, null, href);
+    e.preventDefault()
+    window.history.pushState(null, null, href)
 
     // Fallback for browsers that don't support the API:
     if (!document.startViewTransition) {
-      mountComponent(href);
-      return;
+      mountComponent(href)
+      return
     }
 
     // With a View Transition:
-    document.startViewTransition(() => mountComponent(href));
+    document.startViewTransition(() => mountComponent(href))
   },
   true
-);
+)

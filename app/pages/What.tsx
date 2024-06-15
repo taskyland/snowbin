@@ -1,10 +1,10 @@
-import type { FC } from 'hono/jsx';
+import type { FC } from 'hono/jsx'
 
 export const What: FC = () => {
   return (
     <>
       <h2>
-        <a href="/">snowbin</a>
+        <a href='/'>snowbin</a>
       </h2>
       <p>
         Snowbin is a delightfully crafted pastebin with markdown support. Pastes
@@ -53,8 +53,8 @@ export const What: FC = () => {
         </ul>
         Snowbin admins reserve all rights to delete your content without warning
         (there is no system to notify you). To report any of the above activity,
-        contact me <a href="mailto:tasky@fmhy.net">here.</a>
+        contact me <a href='mailto:tasky@fmhy.net'>here.</a>
       </p>
     </>
-  );
-};
+  )
+}
