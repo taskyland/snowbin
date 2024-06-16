@@ -1,11 +1,12 @@
-import type { FC } from 'hono/jsx'
-import { Button } from '../components/Button'
+import { createRoute } from 'honox/factory'
 import { Textarea } from '../components/Textarea'
+import { Button } from '../components/Button'
+import { render } from '../core/render'
 
-export const Create: FC = () => {
-  return (
+export default createRoute((c) => {
+  return render(
+    c,
     <>
-      {/* <script type="module" src="/static/create.js" /> */}
       <h2>snowbin</h2>
       <p>Delightfully crafted pastebin with {'<3'}.</p>
       <div class='w-full max-w-2xl space-y-4 p-4'>
@@ -16,4 +17,4 @@ export const Create: FC = () => {
       </div>
     </>
   )
-}
+})

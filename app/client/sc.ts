@@ -27,6 +27,10 @@ async function mountComponent(pathname: string) {
   root.innerHTML = jsx.toString()
 }
 
+const enableTransitions = () =>
+  'startViewTransition' in document &&
+  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+
 document.addEventListener('DOMContentLoaded', async function () {
   // Don't handle a server component when initial loading
   await mountComponent(window.location.pathname)
@@ -42,14 +46,16 @@ window.addEventListener(
       return
     }
     const href = (e.target as HTMLElement).getAttribute('href')
-    if (href && !href.startsWith('/')) {
+
+    if (href && typeof href === 'string' && !href.startsWith('/')) {
       return
     }
+
     e.preventDefault()
     window.history.pushState(null, null, href)
 
     // Fallback for browsers that don't support the API:
-    if (!document.startViewTransition) {
+    if (!enableTransitions()) {
       mountComponent(href)
       return
     }

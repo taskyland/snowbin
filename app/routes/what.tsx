@@ -1,7 +1,9 @@
-import type { FC } from 'hono/jsx'
+import { createRoute } from 'honox/factory'
+import { render } from '../core/render'
 
-export const What: FC = () => {
-  return (
+export default createRoute((c) => {
+  return render(
+    c,
     <>
       <h2>
         <a href='/'>snowbin</a>
@@ -57,4 +59,4 @@ export const What: FC = () => {
       </p>
     </>
   )
-}
+})

@@ -1,8 +1,5 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
-
-import styles from './styles.scss'
-import sc from './client/sc?client'
-import theme from './client/theme?client'
+import { Link } from 'honox/server'
 
 export default jsxRenderer(({ children }) => {
   return (
@@ -24,13 +21,18 @@ export default jsxRenderer(({ children }) => {
         />
         <meta property='og:type' content='website' />
         <meta name='theme-color' content='#9EB1FF' />
+        {import.meta.env.PROD ? (
+          <script type='module' src='/static/client.js' />
+        ) : (
+          <script type='module' src='/app/client/sc.ts' />
+        )}
+        {import.meta.env.PROD ? (
+          <script type='module' src='/static/theme.js' />
+        ) : (
+          <script type='module' src='/app/client/theme.ts' />
+        )}
 
-        <script
-          type='module'
-          dangerouslySetInnerHTML={{ __html: Bun.escapeHTML(sc) }}
-        />
-        {/* <script type='module' dangerouslySetInnerHTML={{ __html: theme }} /> */}
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
+        <Link href='/app/styles.scss' rel='stylesheet' />
       </head>
 
       <body>

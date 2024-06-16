@@ -5,12 +5,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
-    "lib": [
-      "esnext",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [],
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }
