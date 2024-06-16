@@ -17,7 +17,13 @@ const schema = insertPasteSchema.omit({
 router
   .get('/:slug', async (c) => {
     const [result] = await db
-      .select()
+      .select({
+        slug: paste.slug,
+        content: paste.content,
+        createdAt: paste.createdAt,
+        updatedAt: paste.updatedAt,
+        expiresAt: paste.expiresAt
+      })
       .from(paste)
       .where(eq(paste.slug, c.req.param('slug')))
       .limit(1)

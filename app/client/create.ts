@@ -1,3 +1,4 @@
+// @ts-nocheck
 const textarea = document.querySelector('#input')!
 const size = document.querySelector('#size')!
 const btn = document.querySelector('#submit')!

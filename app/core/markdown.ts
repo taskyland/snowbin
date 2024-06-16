@@ -4,6 +4,8 @@ import anchor from 'markdown-it-anchor'
 import { full as emoji } from 'markdown-it-emoji'
 import Shiki from '@shikijs/markdown-it'
 import { transformerNotationDiff } from '@shikijs/transformers'
+// @ts-expect-error No types
+import tasklists from 'markdown-it-task-lists'
 
 const md = MarkdownIt({
   linkify: true,
@@ -26,6 +28,7 @@ md.use(
     })
   } as anchor.AnchorOptions)
   .use(emoji)
+  .use(tasklists)
 
 md.linkify.set({ fuzzyLink: false })
 

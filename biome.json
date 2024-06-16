@@ -1,8 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
-  "extends": [
-    "@taskylizard/biome-config"
-  ],
+  "extends": ["@taskylizard/biome-config"],
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
@@ -10,10 +8,7 @@
       "semicolons": "asNeeded",
       "trailingCommas": "none"
     },
-    "globals": [
-      "Bun",
-      "JSX"
-    ]
+    "globals": ["Bun", "JSX"]
   },
   "linter": {
     "rules": {

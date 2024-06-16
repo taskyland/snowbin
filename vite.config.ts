@@ -6,9 +6,14 @@ export default defineConfig(({ mode }) => {
     return {
       build: {
         rollupOptions: {
-          input: ['/app/styles.scss'],
+          input: [
+            '/app/styles.scss',
+            './app/client/sc.ts',
+            './app/client/create.ts'
+          ],
           output: {
-            assetFileNames: 'static/assets/[name].[ext]'
+            entryFileNames: 'static/[name].js',
+            assetFileNames: 'static/[name].[ext]'
           }
         }
       }

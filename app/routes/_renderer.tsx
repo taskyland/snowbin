@@ -23,7 +23,7 @@ export default jsxRenderer(({ children }) => {
         <meta property='og:type' content='website' />
         <meta name='theme-color' content='#9EB1FF' />
         {import.meta.env.PROD ? (
-          <script type='module' src='/static/client.js' />
+          <script type='module' src='/static/sc.js' />
         ) : (
           <script type='module' src='/app/client/sc.ts' />
         )}
