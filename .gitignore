@@ -11,3 +11,5 @@ pnpm-lock.yaml
 .eslintcache
 out.css
 public/static
+db/
+.env

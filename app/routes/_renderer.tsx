@@ -1,3 +1,4 @@
+import { html } from 'hono/html'
 import { jsxRenderer } from 'hono/jsx-renderer'
 import { Link } from 'honox/server'
 
@@ -26,12 +27,31 @@ export default jsxRenderer(({ children }) => {
         ) : (
           <script type='module' src='/app/client/sc.ts' />
         )}
-        {import.meta.env.PROD ? (
-          <script type='module' src='/static/theme.js' />
-        ) : (
-          <script type='module' src='/app/client/theme.ts' />
-        )}
+        {html`<script>
+          (() => {
+            const v = localStorage.getItem("color-scheme"),
+              a = window.matchMedia("(prefers-color-scheme: dark)").matches,
+              cl = document.documentElement.classList,
+              setColorScheme = (v) =>
+                (!v || v === "auto" ? a : v === "dark")
+                  ? cl.add("dark")
+                  : cl.remove("dark");
 
+            setColorScheme(v);
+
+            window.setColorScheme = (v) => {
+              setColorScheme(v);
+              localStorage.setItem("color-scheme", v);
+            };
+
+            window.toggleColorScheme = () => {
+              const cl = document.documentElement.classList;
+              const currentScheme = cl.contains("dark") ? "light" : "dark";
+              cl.toggle("dark");
+              localStorage.setItem("color-scheme", currentScheme);
+            };
+          })();
+        </script>`}
         <Link href='/app/styles.scss' rel='stylesheet' />
       </head>
 
@@ -53,15 +73,14 @@ export default jsxRenderer(({ children }) => {
                 discord
               </a>
               <span>•</span>
-              <a
+              <button
                 // @ts-expect-error
-                // biome-ignore lint/a11y/useValidAnchor: <explanation>
                 onClick='window.toggleColorScheme()'
                 type='button'
-                class='px-2'
+                class='px-2 underline prose dark:prose-invert dark:text-blue-dark-11 text-blue-11  decoration-dashed hover:decoration-solid focus:decoration-solid'
               >
                 theme
-              </a>
+              </button>
             </div>
           </footer>
         </main>

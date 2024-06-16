@@ -1,7 +1,5 @@
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { drizzle } from 'drizzle-orm/postgres-js'
-import postgres from 'postgres'
 
 export const paste = pgTable('paste', {
   slug: text('id').primaryKey().notNull(),
@@ -27,9 +25,6 @@ export const paste = pgTable('paste', {
     precision: 0
   })
 })
-
-export const queryClient = postgres(process.env.DATABASE_URL!)
-export const db = drizzle(queryClient)
 
 export const insertPasteSchema = createInsertSchema(paste)
 export const selectPasteSchema = createSelectSchema(paste)

@@ -1,20 +1,18 @@
 networks:
   snowbin:
 
-volumes:
-  postgres-data:
-
 services:
   postgres:
+    container_name: postgres
     networks:
       - snowbin
     image: postgres:15-alpine
     ports:
-      - "5435:5432"
+      - "5436:5432"
     env_file: .env
     restart: always
     volumes:
-      - "postgres-data:/var/lib/postgresql/data"
+      - "./db:/var/lib/postgresql/data"
     logging:
       options:
         max-size: "20m"

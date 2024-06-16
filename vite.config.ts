@@ -1,20 +1,22 @@
-import honox from "honox/vite";
-import { defineConfig } from "vite";
+import honox from 'honox/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  if (mode === "client") {
+  if (mode === 'client') {
     return {
       build: {
         rollupOptions: {
-          input: ["/app/styles.scss"],
+          input: ['/app/styles.scss'],
           output: {
-            assetFileNames: "static/assets/[name].[ext]",
-          },
-        },
-      },
-    };
+            assetFileNames: 'static/assets/[name].[ext]'
+          }
+        }
+      }
+    }
   }
   return {
-    plugins: [honox()],
-  };
-});
+    optimizeDeps: { exclude: ['drizzle-orm', 'short-unique-id'] },
+    ssr: { external: ['drizzle-orm', 'short-unique-id'] },
+    plugins: [honox()]
+  }
+})
