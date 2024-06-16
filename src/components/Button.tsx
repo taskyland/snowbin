@@ -1,9 +1,6 @@
-interface ButtonProps {
-  id: string
-  name: string
-}
+import type { Component } from 'solid-js'
 
-export function Button(props: ButtonProps) {
+export const Button: Component<{ id: string; name: string }> = (props) => {
   return (
     <button
       type='button'

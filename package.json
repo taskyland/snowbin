@@ -13,6 +13,7 @@
     "@shikijs/markdown-it": "^1.6.4",
     "@shikijs/transformers": "^1.6.4",
     "@shikijs/twoslash": "^1.6.4",
+    "@solidjs/meta": "^0.29.4",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
     "drizzle-zod": "^0.5.1",
@@ -24,6 +25,7 @@
     "postgres": "^3.4.4",
     "shiki": "^1.6.4",
     "short-unique-id": "^5.2.0",
+    "solidjs-use": "^2.3.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

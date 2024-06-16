@@ -11,8 +11,8 @@ export default function Home() {
       <div class='w-full max-w-2xl space-y-4 p-4'>
         <Textarea />
         <div class='grid grid-cols-3 gap-4'>
-          <Input name='Edit Key' id='key' />
-          <Input name='Custom URL' id='url' />
+          <Input placeholder='Edit Key' id='key' />
+          <Input placeholder='Custom URL' id='url' />
           <select
             autocomplete='false'
             id='expiry'

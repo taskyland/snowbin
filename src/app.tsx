@@ -1,9 +1,22 @@
-import { Router } from '@solidjs/router'
+import { A, Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
-import { Suspense } from 'solid-js'
+import { type Signal, Suspense, createEffect } from 'solid-js'
 import './styles.scss'
+import { useColorMode, useCycleList } from 'solidjs-use'
 
 export default function App() {
+  const { mode, setMode } = useColorMode({
+    emitAuto: false
+  })
+
+  const { next } = useCycleList(['dark', 'light'], {
+    initialValue: [mode, setMode] as Signal<any>
+  })
+
+  createEffect(() => {
+    document.documentElement.className = mode()
+  })
+
   return (
     <Router
       root={(props) => (
@@ -17,21 +30,21 @@ export default function App() {
                   source
                 </a>
                 <span>•</span>
-                <a href='/what' class='px-2'>
+                <A href='/what' class='px-2'>
                   what
-                </a>
+                </A>
                 <span>•</span>
                 <a href='https://discord.gg/Stz6y6NgNg' class='px-2'>
                   discord
                 </a>
                 <span>•</span>
-                <a
-                  onClick='window.toggleColorScheme()'
+                <button
+                  onClick={() => next()}
                   type='button'
-                  class='px-2'
+                  class='px-2 underline prose dark:prose-invert dark:text-blue-dark-11 text-blue-11  decoration-dashed hover:decoration-solid focus:decoration-solid'
                 >
                   theme
-                </a>
+                </button>
               </div>
             </footer>
           </main>
