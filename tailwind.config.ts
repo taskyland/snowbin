@@ -82,7 +82,7 @@ const getProse = (theme: (key: string) => string) => {
 
 export default {
   darkMode: 'class',
-  content: ['./app/**/*.tsx'],
+  content: ['./src/**/*.tsx'],
   theme: {
     colors,
     extend: {

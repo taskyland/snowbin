@@ -1,6 +1,9 @@
-import type { FC } from 'hono/jsx'
+interface ButtonProps {
+  id: string
+  name: string
+}
 
-export const Button: FC<{ id: string; name: string }> = (props) => {
+export function Button(props: ButtonProps) {
   return (
     <button
       type='button'
