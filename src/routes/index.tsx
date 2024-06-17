@@ -1,7 +1,15 @@
 import { createSignal } from 'solid-js'
 import { Button } from '~/components/Button'
 import { Input } from '~/components/Input'
-import type { Expiration } from '~/core/utils'
+import { lowerCasify, type Expiration } from '~/core/utils'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '~/components/Select'
+import { toast } from 'solid-sonner'
 
 export default function Home() {
   const [size, setSize] = createSignal(0)
@@ -70,25 +78,25 @@ export default function Home() {
             id='url'
             onInput={(e) => setUrl(e.target.value)}
           />
-          <select
-            autocomplete='false'
-            id='expiry'
-            dir='ltr'
-            class='flex h-10 w-full items-center justify-between rounded-md bg-neutral-3 px-3 py-2 text-sm ring-offset-background placeholder:text-neutral-10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-neutral-dark-5 dark:bg-neutral-dark-3 dark:text-neutral-5'
-            onInput={(e) => setExpiry(e.target.value as Expiration)}
+          <Select
+            placeholder='Expiration'
+            options={['Never', '10m', 'Hour', 'Day', 'Week', 'Month', 'Year']}
+            itemComponent={(props) => (
+              <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+            )}
+            onChange={(v) => setExpiry(lowerCasify(v) as Expiration)}
           >
-            <option value='never'>Never</option>
-            <option value='10m'>10m</option>
-            <option value='hour'>Hour</option>
-            <option value='day'>Day</option>
-            <option value='week'>Week</option>
-            <option value='month'>Month</option>
-            <option value='year'>Year</option>
-          </select>
+            <SelectTrigger>
+              <SelectValue<string>>
+                {(state) => state.selectedOption()}
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent />
+          </Select>
         </div>
       </div>
       <div class='w-full max-w-2xl space-y-4 p-4'>
-        <Button name='Submit' id='submit' onClick={() => handleSubmit()} />
+        <Button name='Submit' id='submit' onClick={() => toast('Hello')} />
       </div>
     </main>
   )

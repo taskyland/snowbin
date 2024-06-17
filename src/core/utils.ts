@@ -1,4 +1,16 @@
 import dayjs from 'dayjs'
+import type { ClassValue } from 'clsx'
+import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export const cn = (...classLists: ClassValue[]) => twMerge(clsx(classLists))
+
+export function lowerCasify(text: string): string {
+  return text.replace(
+    /([^\W_]+[^\s-]*) */g,
+    (txt) => txt.charAt(0).toLowerCase() + txt.substr(1).toLowerCase()
+  )
+}
 
 type Maybe<T> = T | null | undefined
 
