@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "esnext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -15,14 +11,10 @@
     "allowJs": true,
     "noEmit": true,
     "strict": true,
-    "types": [
-      "vinxi/types/client"
-    ],
+    "types": ["vinxi/types/client"],
     "isolatedModules": true,
     "paths": {
-      "~/*": [
-        "./src/*"
-      ]
+      "~/*": ["./src/*"]
     }
   }
 }

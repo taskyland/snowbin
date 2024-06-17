@@ -54,8 +54,5 @@
   "overrides": {
     "typescript": "npm:tslite@latest"
   },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "esbuild"
-  ]
+  "trustedDependencies": ["@biomejs/biome", "esbuild"]
 }
