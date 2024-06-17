@@ -2,7 +2,14 @@ import dayjs from 'dayjs'
 
 type Maybe<T> = T | null | undefined
 
-type Expiration = 'year' | 'month' | 'week' | 'day' | 'hour' | '10m'
+export type Expiration =
+  | 'never'
+  | 'year'
+  | 'month'
+  | 'week'
+  | 'day'
+  | 'hour'
+  | '10m'
 
 export function getExpirationDate(input?: Maybe<Expiration>): Maybe<Date> {
   switch (input) {
