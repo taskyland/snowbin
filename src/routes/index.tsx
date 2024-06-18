@@ -9,12 +9,13 @@ import {
   SelectTrigger,
   SelectValue
 } from '~/components/Select'
+import { redirect } from '@solidjs/router'
 
 export default function Home() {
   const [size, setSize] = createSignal(0)
   const [key, setKey] = createSignal('')
   const [url, setUrl] = createSignal('')
-  const [expiry, setExpiry] = createSignal<Expiration>('never')
+  const [expiry, setExpiry] = createSignal<Expiration | null>('never')
   const [content, setContent] = createSignal('')
 
   const updateSize = (event: any) => {
@@ -42,6 +43,8 @@ export default function Home() {
       })
 
       const result = await response.json()
+
+      redirect(`/${result.slug}`)
       // TODO: redirect
     } catch (error) {
       console.error('Error:', error)
@@ -83,7 +86,9 @@ export default function Home() {
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
             )}
-            onChange={(v) => setExpiry(lowerCasify(v) as Expiration)}
+            onChange={(v) =>
+              setExpiry(v !== null ? (lowerCasify(v) as Expiration) : null)
+            }
           >
             <SelectTrigger>
               <SelectValue<string>>

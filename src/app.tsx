@@ -1,18 +1,11 @@
 import { A, Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
-import { Suspense, createEffect } from 'solid-js'
+import { Suspense } from 'solid-js'
 import './styles.scss'
-import { useDark, useToggle } from 'solidjs-use'
 import { MetaProvider, Meta, Title } from '@solidjs/meta'
+import ModeToggle from './components/ModeToggle'
 
 export default function App() {
-  const isDark = useDark()
-  const [mode, toggle] = useToggle(isDark)
-
-  createEffect(() => {
-    document.documentElement.className = mode() ? 'dark' : 'light'
-  })
-
   return (
     <Router
       root={(props) => (
@@ -31,6 +24,10 @@ export default function App() {
           <Meta name='theme-color' content='#9EB1FF' />
 
           <main class='content'>
+            <div class='top-4 right-4 absolute'>
+              <ModeToggle />
+            </div>
+
             <Suspense>{props.children}</Suspense>
             <hr />
             <footer class='mt-4 w-full max-w-2xl p-4 text-center text-neutral-dark-6 dark:text-neutral-6'>
@@ -46,14 +43,6 @@ export default function App() {
                 <a href='https://discord.gg/Stz6y6NgNg' class='px-2'>
                   discord
                 </a>
-                <span>•</span>
-                <button
-                  onClick={() => toggle()}
-                  type='button'
-                  class='px-2 underline prose dark:prose-invert dark:text-blue-dark-11 text-blue-11  decoration-dashed hover:decoration-solid focus:decoration-solid'
-                >
-                  theme
-                </button>
               </div>
             </footer>
           </main>
