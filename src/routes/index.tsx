@@ -9,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '~/components/Select'
-import { toast } from 'solid-sonner'
 
 export default function Home() {
   const [size, setSize] = createSignal(0)
@@ -96,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div class='w-full max-w-2xl space-y-4 p-4'>
-        <Button name='Submit' id='submit' onClick={() => toast('Hello')} />
+        <Button name='Submit' id='submit' onClick={() => handleSubmit()} />
       </div>
     </main>
   )

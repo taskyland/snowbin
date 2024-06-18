@@ -13,3 +13,5 @@ out.css
 public/static
 db/
 .env
+.output
+.vinxi

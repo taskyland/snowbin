@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import animate from 'tailwindcss-animate'
@@ -83,7 +84,7 @@ const getProse = (theme: (key: string) => string) => {
 
 export default {
   darkMode: 'class',
-  content: ['./src/**/*.tsx'],
+  content: ['src/routes/**/*.{ts,tsx,mdx}', 'src/components/**/*.{ts,tsx}'],
   theme: {
     colors,
     extend: {
