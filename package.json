@@ -10,14 +10,14 @@
     "start": "vinxi start"
   },
   "dependencies": {
-    "@kobalte/core": "^0.13.1",
+    "@kobalte/core": "^0.13.3",
     "@kobalte/utils": "^0.9.0",
-    "@shikijs/markdown-it": "^1.6.4",
-    "@shikijs/transformers": "^1.6.4",
-    "@shikijs/twoslash": "^1.6.4",
+    "@shikijs/markdown-it": "^1.10.3",
+    "@shikijs/transformers": "^1.10.3",
+    "@shikijs/twoslash": "^1.10.3",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.13.3",
-    "@solidjs/start": "^1.0.1",
+    "@solidjs/router": "^0.13.6",
+    "@solidjs/start": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
@@ -28,36 +28,39 @@
     "markdown-it-emoji": "^3.0.0",
     "markdown-it-task-lists": "^2.1.1",
     "postgres": "^3.4.4",
-    "shiki": "^1.6.4",
+    "shiki": "^1.10.3",
     "short-unique-id": "^5.2.0",
-    "solid-js": "^1.8.17",
+    "solid-js": "^1.8.18",
     "solidjs-use": "^2.3.0",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "vinxi": "^0.3.11",
+    "vinxi": "^0.3.14",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "@biomejs/biome": "^1.8.1",
+    "@biomejs/biome": "^1.8.3",
     "@radix-ui/colors": "^0.1.9",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.13",
     "@taskylizard/biome-config": "^1.0.1",
-    "@types/bun": "^1.1.4",
+    "@types/bun": "^1.1.6",
     "@types/markdown-it": "^13.0.8",
     "@types/markdown-it-anchor": "^7.0.0",
     "@types/markdown-it-attrs": "^4.1.3",
     "@types/markdown-it-emoji": "^2.0.5",
-    "drizzle-kit": "^0.22.7",
-    "drizzle-orm": "^0.31.2",
+    "autoprefixer": "^10.4.19",
+    "drizzle-kit": "^0.22.8",
+    "drizzle-orm": "^0.31.4",
+    "postcss": "^8.4.39",
     "postcss-load-config": "^6.0.1",
-    "sass": "^1.77.5",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.3.3"
+    "sass": "^1.77.8",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.3"
   },
   "overrides": {
     "typescript": "npm:tslite@latest"
   },
-  "trustedDependencies": ["@biomejs/biome", "esbuild"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "esbuild"
+  ]
 }
