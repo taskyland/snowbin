@@ -1,5 +1,8 @@
 # snowbin (v2)
 
+> [!NOTE]
+> snowbin is currently being rewritten. Stay tuned for the future.
+
 Snowbin is a delightfully crafted pastebin with markdown support. Pastes are
 saved upto 7 days before being deleted.
 
