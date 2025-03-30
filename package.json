@@ -12,7 +12,7 @@
     "@shikijs/transformers": "^1.1.1",
     "hono": "^4.0.0",
     "markdown-it": "^14.0.0",
-    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-anchor": "^9.0.0",
     "markdown-it-attrs": "^4.1.6",
     "markdown-it-emoji": "^3.0.0",
     "short-unique-id": "^5.0.3"
