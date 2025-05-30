@@ -10,14 +10,6 @@ export const What: FC = () => {
         are saved upto 7 days before being deleted. snowbin is a work in
         progress, not everything is complete.
       </p>
-      <h2>Usage</h2>
-      <p>
-        Usual commonmark compliant markdown syntax is supported with extensions
-        like Shiki for code highlighting, emoji and much more coming soon. Only
-        TypeScript and JavaScript languages are supported due to technical
-        limitations and will be fixed soon.
-      </p>
-
       <h2>Terms of Usage</h2>
       <h4>Content</h4>
       <p>

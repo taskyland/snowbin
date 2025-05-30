@@ -30,16 +30,12 @@ export const Layout: FC = (props) => {
           <hr />
           <footer class="mt-4 w-full max-w-2xl p-4 text-center text-neutral-dark-6 dark:text-neutral-6">
             <div class="flex justify-center space-x-2">
-              <a href="https://github.com/fmhy/snowbin" class="px-2">
+              <a href="https://github.com/taskyland/snowbin" class="px-2">
                 source
               </a>
               <span>•</span>
               <a href="/what" class="px-2">
                 what
-              </a>
-              <span>•</span>
-              <a href="https://discord.gg/Stz6y6NgNg" class="px-2">
-                discord
               </a>
               <span>•</span>
               <a
