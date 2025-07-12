@@ -7,7 +7,7 @@ export const What: FC = () => {
       <h2>snowbin</h2>
       <p>
         Snowbin is a delightfully crafted pastebin with markdown support. Pastes
-        are saved upto 7 days before being deleted. snowbin is a work in
+        are saved up to 7 days before being deleted. snowbin is a work in
         progress, not everything is complete.
       </p>
       <h2>Terms of Usage</h2>
