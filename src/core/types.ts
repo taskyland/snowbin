@@ -8,3 +8,12 @@ export type GetRequest = {
   key?: string
   url?: string
 }
+
+export type DeleteRequest = {
+  key: string
+}
+
+export type UpdateRequest = {
+  content: string
+  key: string
+}

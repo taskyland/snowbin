@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "dependencies": {
@@ -34,10 +35,10 @@
   },
   "trustedDependencies": [
     "workerd",
-    "esbuild",
-    "sharp",
-    "unrs-resolver",
     "@parcel/watcher",
+    "esbuild",
+    "unrs-resolver",
+    "sharp",
   ],
   "overrides": {
     "typescript": "npm:tslite@latest",
