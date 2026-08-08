@@ -12,6 +12,16 @@ describe('centered text', () => {
     )
   })
 
+  test('centers headings and removes their markers', () => {
+    const rendered = md.render('### -> **General Terms** <-')
+
+    expect(rendered).toContain(
+      '<h3 class="text-center justify-center" id="general-terms" tabindex="-1"><strong>General Terms</strong>'
+    )
+    expect(rendered).not.toContain('-&gt;')
+    expect(rendered).not.toContain('&lt;-')
+  })
+
   test('leaves unmatched markers as regular text', () => {
     expect(md.render('-> Text')).toBe('<p>-&gt; Text</p>\n')
   })
@@ -47,6 +57,14 @@ describe('table of contents', () => {
   test('accepts the legacy [TOC2] marker', () => {
     expect(md.render('[TOC2]\n\n# Glossary')).toContain(
       '<nav class="table-of-contents"><ul><li><a href="#glossary">Glossary</a></li></ul></nav>'
+    )
+  })
+
+  test('uses centered heading text without markers', () => {
+    const rendered = md.render('[TOC]\n\n### -> General Terms <-')
+
+    expect(rendered).toContain(
+      '<nav class="table-of-contents"><ul><li><a href="#general-terms">General Terms</a></li></ul></nav>'
     )
   })
 
