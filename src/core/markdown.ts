@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
+import toc from 'markdown-it-toc-done-right'
 
 // @ts-expect-error No types
 import { full as emoji } from 'markdown-it-emoji'
@@ -49,12 +50,13 @@ const md = new MarkdownIt({
   typographer: true,
   html: false
 })
+  .use(emoji)
+  .use(toc, { placeholder: '\\[TOC\\]', listType: 'ul' })
   .use(anchor, {
     permalink: anchor.permalink.ariaHidden({
       symbol: `<svg width="20" height="20"><use href="#radix-icons-link-2"/></svg>`
     })
   } as anchor.AnchorOptions)
-  .use(emoji)
   .use(centeredText)
 
 md.linkify.set({ fuzzyLink: false })
