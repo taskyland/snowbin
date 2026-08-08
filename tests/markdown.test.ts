@@ -44,6 +44,12 @@ describe('table of contents', () => {
     expect(rendered).toContain('<h1 id="repeat-1"')
   })
 
+  test('accepts the legacy [TOC2] marker', () => {
+    expect(md.render('[TOC2]\n\n# Glossary')).toContain(
+      '<nav class="table-of-contents"><ul><li><a href="#glossary">Glossary</a></li></ul></nav>'
+    )
+  })
+
   test('leaves inline markers as regular text', () => {
     expect(md.render('Read the [TOC] marker.')).toBe(
       '<p>Read the [TOC] marker.</p>\n'

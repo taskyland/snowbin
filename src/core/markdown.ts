@@ -51,7 +51,7 @@ const md = new MarkdownIt({
   html: false
 })
   .use(emoji)
-  .use(toc, { placeholder: '\\[TOC\\]', listType: 'ul' })
+  .use(toc, { placeholder: '\\[TOC2?\\]', listType: 'ul' })
   .use(anchor, {
     permalink: anchor.permalink.ariaHidden({
       symbol: `<svg width="20" height="20"><use href="#radix-icons-link-2"/></svg>`
